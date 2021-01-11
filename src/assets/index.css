@@ -16,6 +16,10 @@
     @apply text-gray-600
   }
 
+  .formInput {
+    @apply w-3/4 h-10 rounded mb-6 px-3 outline-none ring-2 ring-gray-200 focus:ring-teal-600
+  }
+
   .hamburgerIcon {
     @apply w-full h-0.5 absolute bg-gray-100 duration-500
   }
