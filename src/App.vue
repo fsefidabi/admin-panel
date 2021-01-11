@@ -1,21 +1,17 @@
 <template>
-  <div class="flex p-6">
+  <div class="w-screen flex flex-col md:flex-row justify-center mx-auto p-6">
     <Navbar :nav-items="navItems" :current-tab="state.currentTab" :update-current-tab="updateCurrentTab"/>
-    <div class="w-11/12 py-6 px-10 bg-gray-100 rounded-2xl">
-      <StatusBar class="mb-5"/>
-      <div class="mt-4 my-9 border-b border-gray-800 border-opacity-20"></div>
-      <router-view :current-tab="state.currentTab"/>
-    </div>
+    <MainPanel :current-tab="state.currentTab"/>
   </div>
 </template>
 
 <script>
   import Navbar from '@/components/Navbar'
-  import {reactive} from 'vue'
-  import StatusBar from '@/components/StatusBar'
+  import {reactive, ref} from 'vue'
+  import MainPanel from '@/views/MainPanel'
 
   export default {
-    components: {StatusBar, Navbar},
+    components: {MainPanel, Navbar},
     setup () {
       const navItems = [
         {
@@ -37,11 +33,12 @@
       ]
 
       const state = reactive({
-        currentTab: navItems[0].name
+        currentTab: ref('Dashboard')
       })
 
       function updateCurrentTab (item) {
         state.currentTab = item.name
+        console.log(state.currentTab)
       }
 
       return {

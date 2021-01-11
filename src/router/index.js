@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Users from '@/views/Users'
+import Pages from '@/views/Pages'
+import Archive from '@/views/Archive'
 
 const routes = [
   {
@@ -14,9 +16,19 @@ const routes = [
     component: Dashboard
   },
   {
+    path: '/pages',
+    name: 'Pages',
+    component: Pages
+  },
+  {
     path: '/users',
     name: 'Users',
     component: Users
+  },
+  {
+    path: '/archive',
+    name: 'Archive',
+    component: Archive
   }
   
     // route level code-splitting

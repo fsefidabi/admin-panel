@@ -1,8 +1,9 @@
 <template>
   <div class="flex-col flex-wrap">
     <h2 class="mb-7 text-lg font-bold">General Report</h2>
-    <div class="flex w-full">
-      <div v-for="(cardItem, index) in CardWidgets" :key="index" class="w-1/4 mx-3 first:ml-0 last:mr-0">
+    <div class="flex justify-between flex-wrap lg:flex-nowrap w-full">
+      <div v-for="(cardItem, index) in CardWidgets" :key="index"
+           class="my-5 w-full sm:w-9/19 lg:w-3/13">
         <CardComponent
             :title="cardItem.title"
             :icon="cardItem.icon"
@@ -50,7 +51,7 @@
         {
           title: 'Monthly Profits',
           icon: 'fa fa-line-chart text-blue-700',
-          value: '6.420.000 IR',
+          value: 6420000,
           difference: 367,
           rate: 'down'
         }
