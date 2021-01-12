@@ -25,7 +25,7 @@
   import {reactive} from 'vue'
 
   export default {
-    name: 'Login',
+    name: 'Auth',
     setup () {
       let openTab = 1
       const tabs = ['Sign In', 'Sign Up']

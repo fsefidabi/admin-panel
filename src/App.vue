@@ -15,11 +15,11 @@
     components: {MainPanel, Navbar},
     setup () {
       const store = useStore()
-      const tab = computed(() => store.state.currentTab)
-      const navItems = store.state.navItems
+      const tab = computed(() => store.state.Navbar.currentTab)
+      const navItems = store.state.Navbar.navItems
 
       async function updateCurrentTab (item) {
-        await store.dispatch('updateCurrentTab', item)
+        await store.dispatch('Navbar/updateCurrentTab', item)
         console.log(tab)
       }
 

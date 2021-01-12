@@ -3,13 +3,13 @@ import Dashboard from '../views/Dashboard.vue'
 import Users from '@/views/Users'
 import Pages from '@/views/Pages'
 import Archive from '@/views/Archive'
-import Login from '@/views/Login'
+import Auth from '@/views/Auth'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Login
+    component: Auth
   },
   {
     path: '/dashboard',
