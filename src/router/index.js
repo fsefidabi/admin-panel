@@ -3,7 +3,8 @@ import Dashboard from '../views/Dashboard.vue'
 import Users from '@/views/Users'
 import Pages from '@/views/Pages'
 import Archive from '@/views/Archive'
-import Auth from '@/views/Auth'
+import Auth from '@/components/Auth'
+import Authentication from '@/views/Authentication'
 
 const routes = [
   {
@@ -13,8 +14,8 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Auth',
-    component: Auth,
+    name: 'Authentication',
+    component: Authentication,
     meta: {
       guest: true
     }
@@ -47,11 +48,7 @@ const routes = [
   {
     path: '/archive',
     name: 'Archive',
-    component: Archive,
-    meta: {
-      requiresAuth: true,
-      is_admin: true
-    }
+    component: Archive
   }
   
   // route level code-splitting
@@ -69,23 +66,23 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (localStorage.getItem('jwt') == null) {
       next({
-        path: '/login',
+        path: '/dashboard',
         params: {nextUrl: to.fullPath}
       })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))
       console.log(user)
+      next()
     }
-  } else if(to.matched.some(record => record.meta.guest)) {
-    if(localStorage.getItem('jwt') == null){
+  } else if (to.matched.some(record => record.meta.guest)) {
+    if (localStorage.getItem('jwt') == null) {
       next()
       console.log('if guest jwt: ', localStorage.getItem('jwt'))
       console.log('if guest user: ', localStorage.getItem('user'))
-    }
-    else{
+    } else {
       console.log('else guest jwt: ', localStorage.getItem('jwt'))
       console.log('else guest user: ', localStorage.getItem('user'))
-      next({ name: 'dashboard'})
+      next({path: '/dashboard'})
     }
   } else {
     console.log('jwt: ', localStorage.getItem('jwt'))

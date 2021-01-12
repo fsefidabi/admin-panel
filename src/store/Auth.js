@@ -16,8 +16,10 @@ export const AuthModule = {
       console.log(user.password)
       
       axios({url: '/login', data: user, method: 'POST'})
-        .then(() => {
-          console.log('from axios')
+        .then((res) => {
+          console.log(res)
+          localStorage.setItem('user', JSON.stringify(res.data.user))
+          localStorage.setItem('jwt', res.data.token)
         })
     }
   },
