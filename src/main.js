@@ -5,3 +5,4 @@ import store from './store/index'
 import './assets/index.css'
 
 createApp(App).use(store).use(router).mount('#app')
+
