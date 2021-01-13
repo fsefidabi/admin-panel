@@ -4,16 +4,32 @@
 @tailwind utilities;
 
 @layer components {
-  .light-font {
+  .background {
+    @apply bg-gradient-to-br from-teal-900 to-teal-700 dark:from-blueGray-900 dark:to-blueGray-800
+  }
+
+  .panel-background {
+    @apply bg-gray-100 dark:bg-blueGray-800
+  }
+
+  .card-background {
+    @apply bg-white dark:bg-blueGray-900
+  }
+
+  .theme-btn-background {
+    @apply border-gray-800 dark:bg-transparent dark:border-gray-50
+  }
+
+  .light-text {
     @apply text-white
   }
 
-  .dark-font {
-    @apply text-gray-800
+  .main-text-color {
+    @apply text-gray-800 dark:text-white
   }
 
-  .gray-font {
-    @apply text-gray-600
+  .gray-font-color {
+    @apply text-gray-700 dark:text-gray-300
   }
 
   .formInput {

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full flex flex-col justify-center items-center">
-    <h1 class="light-font font-bold text-2xl">Sample Admin Panel</h1>
+    <h1 class="light-text font-bold text-2xl">Sample Admin Panel</h1>
     <Auth class="mt-8"/>
     <router-view :current-tab="currentTab" class="min-h-screen"/>
   </div>

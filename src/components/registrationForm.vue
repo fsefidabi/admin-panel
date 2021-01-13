@@ -4,7 +4,8 @@
     <input type="email" placeholder="Email" v-model="email" class="formInput">
     <input type="password" placeholder="Password" v-model="password" class="formInput">
     <input type="password" placeholder="Confirm Password" v-model="confirmPassword" class="formInput">
-    <button class="my-7 py-2.5 px-4 rounded-md bg-red-500 light-font font-bold outline-none focus:outline-none hover:bg-red-600">
+    <button
+        class="my-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
       Sign Up
     </button>
   </form>
@@ -25,16 +26,19 @@
 
       function register () {
         let email = this.email
-        console.log('register')
-        console.log(email)
-        console.log(this.email)
         let password = this.password
-        store.dispatch('Auth/retrieveToken', {email, password})
-            .then(() => {
-              router.push('/register')
-              console.log('dispatch done successfully')
-            })
-            .catch(err => console.log('dispatch failed ', err))
+        let confirmPassword = this.confirmPassword
+        if (confirmPassword !== password) {
+          alert('password confirmation doesn\'t match password')
+        } else {
+          console.log('from registration form')
+          store.dispatch('Auth/retrieveToken', {email, password})
+              .then(() => {
+                router.push('/register')
+                console.log('dispatch done successfully')
+              })
+              .catch(err => console.log('dispatch failed ', err))
+        }
       }
 
       return {

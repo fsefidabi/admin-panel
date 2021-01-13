@@ -4,7 +4,6 @@ import Users from '@/views/Users'
 import Pages from '@/views/Pages'
 import Archive from '@/views/Archive'
 import Auth from '@/components/Auth'
-import Authentication from '@/views/Authentication'
 
 const routes = [
   {
@@ -14,8 +13,16 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Authentication',
-    component: Authentication,
+    name: 'Auth',
+    component: Auth,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Auth,
     meta: {
       guest: true
     }
@@ -48,7 +55,11 @@ const routes = [
   {
     path: '/archive',
     name: 'Archive',
-    component: Archive
+    component: Archive,
+    meta: {
+      requiresAuth: true,
+      is_admin: true
+    }
   }
   
   // route level code-splitting
@@ -65,28 +76,39 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (localStorage.getItem('jwt') == null) {
+      console.log(1)
+      alert('Access to this page requires admin authentication.')
       next({
         path: '/dashboard',
         params: {nextUrl: to.fullPath}
       })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))
-      console.log(user)
-      next()
+      if (to.matched.some(record => record.meta.is_admin)) {
+        if (user.is_admin == 1) {
+          console.log(2)
+          next()
+        } else {
+          console.log(3)
+          alert('Access to this page requires admin authentication.')
+          next({path: '/dashboard'})
+        }
+      } else {
+        console.log(4)
+        console.log(user)
+        next()
+      }
     }
   } else if (to.matched.some(record => record.meta.guest)) {
-    if (localStorage.getItem('jwt') == null) {
+    if (localStorage.getItem('jwt') === null) {
+      console.log(5)
       next()
-      console.log('if guest jwt: ', localStorage.getItem('jwt'))
-      console.log('if guest user: ', localStorage.getItem('user'))
     } else {
-      console.log('else guest jwt: ', localStorage.getItem('jwt'))
-      console.log('else guest user: ', localStorage.getItem('user'))
+      console.log(6)
       next({path: '/dashboard'})
     }
   } else {
-    console.log('jwt: ', localStorage.getItem('jwt'))
-    console.log('user: ', localStorage.getItem('user'))
+    console.log(7)
     next()
   }
 })

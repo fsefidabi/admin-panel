@@ -2,7 +2,7 @@
   <div class="w-80">
     <button v-for="tab in tabs" :key="tab"
             class="w-1/2 py-3 rounded-t-md outline-none focus:outline-none duration-500 shadow-sm bg-teal-700 shadow-inner shadow-2xl"
-            :class="{'bg-teal-700 font-bold light-font border-b-0 border-2 border-gray-200' : state.currentTab === tab,
+            :class="{'bg-teal-700 font-bold light-text border-b-0 border-2 border-gray-200' : state.currentTab === tab,
             ' bg-opacity-40 border-b-2 border-gray-200 shadow-inner':
             state.currentTab
             !== tab}"

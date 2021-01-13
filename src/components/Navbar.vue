@@ -2,7 +2,7 @@
   <nav class="w-full md:w-1/12 lg:w-1/6 text-left">
     <div class="flex md:block justify-between items-center">
       <a href="#"
-         class="inline-block md:w-full md:mt-5 md:my-5 lg:mb-0 ml-7 md:ml-0 lg:ml-7  text-xl lg:text-2xl light-font font-bold text-left md:text-center lg:text-left">
+         class="inline-block md:w-full md:mt-5 md:my-5 lg:mb-0 ml-7 md:ml-0 lg:ml-7  text-xl lg:text-2xl light-text font-bold text-left md:text-center lg:text-left">
         <i class="fa fa-diamond" aria-hidden="true"></i>
         <span class="md:hidden lg:inline ml-3">Logo</span>
       </a>

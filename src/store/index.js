@@ -1,6 +1,7 @@
 import {createStore} from 'vuex'
 import {NavbarModule} from './Navbar'
 import {AuthModule} from '@/store/Auth'
+import {AppModule} from '@/store/App'
 
 const store = createStore({
   state: {},
@@ -11,7 +12,8 @@ const store = createStore({
   
   modules: {
     Navbar: NavbarModule,
-    Auth: AuthModule
+    Auth: AuthModule,
+    App: AppModule
   }
 })
 

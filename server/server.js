@@ -15,11 +15,27 @@ app.use(express.static(__dirname + '/../dist'))
 app.use(express.json())
 
 app.post('/login', (req, res) => {
-  console.log(req.body)
-  console.log('posted')
+  console.log('login')
+  userModel.findOne({email: req.body.email}).exec()
+    .then(authenticatedUser => {
+      if(authenticatedUser) {
+        let token = jwt.sign({email: authenticatedUser.email}, config.secret, {expiresIn: 86400})
+        console.log(token)
+        res.status(200).send({auth: true, token: token, user: authenticatedUser})
+      }
+      else {
+        res.status(500).send('There was a problem getting user')
+      }
+      
+    })
+    .catch((err) => res.status(500).send('There was a problem getting user'))
+})
+
+app.post('/register', (req, res) => {
+  console.log('registration')
   const user = new userModel({email: req.body.email, password: req.body.password})
-  user.save(async (err) => {
-    if (err) return res.status(500).send('There was a problem registering the user.')
+  user.save((err, res) => {
+    if (err) console.log('mongodb error ', err)
     userModel.findOne({email: req.body.email}).exec()
       .then(authenticatedUser => {
         let token = jwt.sign({email: authenticatedUser.email}, config.secret, {expiresIn: 86400})
@@ -30,14 +46,18 @@ app.post('/login', (req, res) => {
   })
 })
 
-app.post('/register', (req) => {
-  console.log(req.body)
-  console.log('posted')
+app.post('/register-admin', (req, res) => {
+  console.log('admin registration')
   const user = new userModel({email: req.body.email, password: req.body.password})
   user.save((err, res) => {
     if (err) console.log('mongodb error ', err)
-    console.log(res)
-    console.log(user)
+    userModel.findOne({email: req.body.email}).exec()
+      .then(authenticatedUser => {
+        let token = jwt.sign({email: authenticatedUser.email}, config.secret, {expiresIn: 86400})
+        console.log(token)
+        res.status(200).send({auth: true, token: token, user: authenticatedUser})
+      })
+      .catch((err) => res.status(500).send('There was a problem getting user'))
   })
 })
 
