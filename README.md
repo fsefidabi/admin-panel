@@ -1,24 +1,14 @@
 # admin-panel
 
-## Project setup
+A small and simple admin panel, containing authentication, authorization and internationalization. 
+
+####Quick Start:
+Use bellow commands to start vue app on `localhost:8080`.
 ```
-npm install
+git clone https://github.com/fsefidabi/admin-panel.git
+npm i
+npm start
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
