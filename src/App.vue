@@ -15,7 +15,6 @@
   import Navbar from '@/components/Navbar'
   import MainPanel from '@/views/MainPanel'
   import DarkModeBtn from '@/components/DarkModeBtn'
-
   export default {
     components: {DarkModeBtn, MainPanel, Navbar},
     setup () {

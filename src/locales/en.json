@@ -1,0 +1,13 @@
+{
+  "websiteLogo": "Logo",
+  "navbarItems": {
+    "Dashboard": "Dashboard",
+    "Pages": "Pages",
+    "Users": "Users",
+    "Archive": "Archive"
+  },
+  "welcomePage": [
+    "Sign In",
+    "Sign Up"
+  ]
+}

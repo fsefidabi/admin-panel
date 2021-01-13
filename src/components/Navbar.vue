@@ -4,7 +4,7 @@
       <a href="#"
          class="inline-block md:w-full md:mt-5 md:my-5 lg:mb-0 ml-7 md:ml-0 lg:ml-7  text-xl lg:text-2xl light-text font-bold text-left md:text-center lg:text-left">
         <i class="fa fa-diamond" aria-hidden="true"></i>
-        <span class="md:hidden lg:inline ml-3">Logo</span>
+        <span class="md:hidden lg:inline ml-3">{{$t('websiteLogo')}}</span>
       </a>
       <div class="md:hidden w-6 h-4 relative origin-center cursor-pointer" @click="toggleHamburgerClass">
         <div class=" hamburgerIcon top-0" :class="[state.hamburgerIsActive === true ? 'transform top-1/2 rotate-45' :
@@ -28,12 +28,15 @@
 <script>
   import NavItem from '@/components/NavItem'
   import {reactive} from 'vue'
+  import {useStore} from 'vuex'
 
   export default {
     name: 'Navbar',
     components: {NavItem},
     props: ['navItems', 'currentTab', 'updateCurrentTab'],
     setup () {
+      const store = useStore()
+      const locale = store.state.App.locale
       const state = reactive({
         hamburgerIsActive: false
       })
@@ -43,6 +46,7 @@
       }
 
       return {
+        locale,
         state,
         toggleHamburgerClass
       }

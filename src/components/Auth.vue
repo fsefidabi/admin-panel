@@ -26,7 +26,6 @@
     setup () {
       let openTab = 1
       const tabs = ['Sign In', 'Sign Up']
-
       const state = reactive({
         currentTab: tabs[0]
       })

@@ -13,8 +13,8 @@
         />
       </div>
     </div>
-    <div class="w-full h-80 mt-10">
-      <img src="../assets/vue-chartjs.png" class="w-full h-full">
+    <div class="w-full h-80 mt-10 border text-3xl">
+      chart
     </div>
   </div>
 </template>

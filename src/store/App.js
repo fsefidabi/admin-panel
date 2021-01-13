@@ -1,9 +1,24 @@
+import i18n from '@/plugins/i18n'
+
 export const AppModule = {
   namespaced: true,
   
   state: {
     darkMode: false,
-    theme: 'Dark Mode'
+    theme: 'Dark Mode',
+    locale: i18n.locale,
+    languages: [
+      {
+        flag: 'us',
+        language: 'en',
+        title: 'English'
+      },
+      {
+        flag: 'ir',
+        language: 'fa',
+        title: 'فارسی'
+      }
+    ]
   },
   
   mutations: {

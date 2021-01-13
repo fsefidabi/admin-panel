@@ -1,5 +1,8 @@
 <template>
-  <div class="w-32 flex justify-between items-center relative" @mouseleave="hideSignOutLabel">
+  <div class="w-60 flex justify-between items-center relative" @mouseleave="hideSignOutLabel">
+    <button v-for="language in languages" :key="language.title" @click="$i18n.locale = language.language">
+      <flag :iso="language.flag" :squared=false />
+    </button>
     <i class="fa fa-bell-o text-xl cursor-pointer"></i>
     <i class="fa fa-comment-o text-xl cursor-pointer"></i>
     <div id="userImage" class="w-9 h-9 rounded-3xl border cursor-pointer overflow-hidden"
@@ -24,8 +27,11 @@
       const router = useRouter()
       const store = useStore()
 
+      const languages = store.state.App.languages
+
       function showSignOutLabel () {
         document.getElementById('signOutBtn').classList.remove('hidden')
+        console.log(this.i18n.locale)
       }
 
       function hideSignOutLabel () {
@@ -41,6 +47,7 @@
       }
 
       return {
+        languages,
         showSignOutLabel,
         hideSignOutLabel,
         logout
