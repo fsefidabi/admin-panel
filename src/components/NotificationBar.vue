@@ -31,7 +31,6 @@
 
       function showSignOutLabel () {
         document.getElementById('signOutBtn').classList.remove('hidden')
-        console.log(this.i18n.locale)
       }
 
       function hideSignOutLabel () {
@@ -42,7 +41,7 @@
         store.dispatch('Auth/logout')
             .then(() => {
               console.log('logged out successfully.')
-              router.push('/login')
+              router.push('/')
             })
       }
 
