@@ -6,8 +6,6 @@
     "Users": "Users",
     "Archive": "Archive"
   },
-  "welcomePage": [
-    "Sign In",
-    "Sign Up"
-  ]
+  "login": "Sign In",
+  "register": "Sign Up"
 }

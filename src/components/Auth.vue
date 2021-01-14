@@ -19,19 +19,31 @@
   import {reactive} from 'vue'
   import LoginForm from '@/components/LoginForm'
   import RegistrationForm from '@/components/registrationForm'
+  import {useI18n} from 'vue-i18n'
+  // import {useStore} from 'vuex'
 
   export default {
     name: 'Auth',
     components: {RegistrationForm, LoginForm},
     setup () {
+      const i18n = useI18n()
+      // const store = useStore()
       let openTab = 1
       const tabs = ['Sign In', 'Sign Up']
       const state = reactive({
-        currentTab: tabs[0]
+        currentTab: i18n.t('login')
       })
+      //you've left here.
+      // it works properly in first glance and shows right content for login and register tabs. but switching to
+      //fa lang dont change anything.
+      //according to the github issue which is opened in your chrome(!) you should use watch or ref to follow changes.
+      //Good Luck Honey :)
 
       function toggleTabs (tab) {
         state.currentTab = tab
+        console.log(i18n.locale)
+        console.log(i18n.t)
+        console.log(i18n.t('login'))
       }
 
       return {

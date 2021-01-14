@@ -13,6 +13,13 @@ mongoose.connect('mongodb://localhost:27017/test', {
 
 app.use(express.static(__dirname + '/../dist'))
 app.use(express.json())
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS, PUT,PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Credentials','true');
+  next();
+});
 
 app.post('/login', (req, res) => {
   console.log('login')
@@ -61,4 +68,4 @@ app.post('/register-admin', (req, res) => {
   })
 })
 
-app.listen(8080, () => console.log('connected to express server'))
+app.listen(3000, () => console.log('connected to express server'))

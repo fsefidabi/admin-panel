@@ -25,6 +25,7 @@
 
       async function updateCurrentTab (item) {
         await store.dispatch('Navbar/updateCurrentTab', item)
+
       }
 
       return {
