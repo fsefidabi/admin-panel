@@ -6,12 +6,12 @@ export const AuthModule = {
   state: {
     status: 'pending',
     token: localStorage.getItem('token') || '',
-    user: {}
+    user: {},
   },
   
   mutations: {
     RETRIEVE_TOKEN (state, user) {
-      axios({url: '/login', data: user, method: 'POST'})
+      axios({url: 'http://localhost:3000/login', data: user, method: 'POST'})
         .then((res) => {
           localStorage.setItem('user', JSON.stringify(res.data.user))
           localStorage.setItem('jwt', res.data.token)

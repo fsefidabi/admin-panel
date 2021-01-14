@@ -1,11 +1,39 @@
 {
-  "websiteLogo": "Logo",
-  "navbarItems": {
-    "Dashboard": "Dashboard",
-    "Pages": "Pages",
-    "Users": "Users",
-    "Archive": "Archive"
+  "authForm": {
+    "login": "Sign In",
+    "register": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirmation": "Confirm Password"
   },
-  "login": "Sign In",
-  "register": "Sign Up"
+  "navbar": {
+    "websiteLogo": "Logo",
+    "navItems": {
+      "dashboard": "Dashboard",
+      "pages": "Pages",
+      "users": "Users",
+      "archive": "Archive"
+    }
+  },
+  "statusBar": {
+    "search": "Search",
+    "signOutButton": "Sign Out"
+  },
+  "dashboard": {
+    "title": "General Report",
+    "cards": {
+      "newUsersCard" : {
+        "title": "New Users"
+      },
+      "newOrdersCard": {
+        "title": "New Orders"
+      },
+      "totalProductsCard" : {
+        "title": "Total Products"
+      },
+      "monthlyProfitCard": {
+        "title": "Monthly Profit"
+      }
+    }
+  }
 }

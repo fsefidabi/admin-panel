@@ -1,11 +1,39 @@
 {
-  "websiteLogo": "لوگو",
-  "navbarItems": {
-    "Dashboard": "پنل کاربری",
-    "Pages": "صفحات",
-    "Users": "کاربرها",
-    "Archive": "آرشیو"
+  "authForm": {
+    "login": "ورود",
+    "register": "عضویت",
+    "email": "ایمیل",
+    "password": "رمز عبور",
+    "passwordConfirmation": "تایید رمز عبور"
   },
-  "login": "ورود",
-  "register": "عضویت"
+  "navbar": {
+    "websiteLogo": "لوگو",
+    "navItems" : {
+      "dashboard": "پنل کاربری",
+      "pages": "صفحات",
+      "users": "کاربرها",
+      "archive": "آرشیو"
+    }
+  },
+  "statusBar": {
+    "search": "جستجو",
+    "signOutButton": "خروج"
+  },
+  "dashboard": {
+    "title": "گزارش عمومی",
+    "cards": {
+      "newUsersCard" : {
+        "title": "کاربران جدید"
+      },
+      "newOrdersCard": {
+        "title": "سفارش های جدید"
+      },
+      "totalProductsCard" : {
+        "title": "تعداد کل محصولات"
+      },
+      "monthlyProfitCard": {
+        "title": "سود ماهانه"
+      }
+    }
+  }
 }

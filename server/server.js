@@ -11,7 +11,6 @@ mongoose.connect('mongodb://localhost:27017/test', {
   useUnifiedTopology: true
 }).then(() => console.log('Database connection is successful.'))
 
-app.use(express.static(__dirname + '/../dist'))
 app.use(express.json())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -31,11 +30,12 @@ app.post('/login', (req, res) => {
         res.status(200).send({auth: true, token: token, user: authenticatedUser})
       }
       else {
+        alert('User not found. Please register first')
         res.status(500).send('There was a problem getting user')
       }
       
     })
-    .catch((err) => res.status(500).send('There was a problem getting user'))
+    .catch(() => res.status(500).send('There was a problem getting user'))
 })
 
 app.post('/register', (req, res) => {
@@ -49,7 +49,7 @@ app.post('/register', (req, res) => {
         console.log(token)
         res.status(200).send({auth: true, token: token, user: authenticatedUser})
       })
-      .catch((err) => res.status(500).send('There was a problem getting user'))
+      .catch(() => res.status(500).send('There was a problem getting user'))
   })
 })
 
@@ -64,7 +64,7 @@ app.post('/register-admin', (req, res) => {
         console.log(token)
         res.status(200).send({auth: true, token: token, user: authenticatedUser})
       })
-      .catch((err) => res.status(500).send('There was a problem getting user'))
+      .catch(() => res.status(500).send('There was a problem getting user'))
   })
 })
 

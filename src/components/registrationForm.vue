@@ -1,12 +1,12 @@
 <template>
   <form @submit.prevent="register"
         class="flex flex-col justify-center items-center pt-6">
-    <input type="email" placeholder="Email" v-model="email" class="formInput">
-    <input type="password" placeholder="Password" v-model="password" class="formInput">
-    <input type="password" placeholder="Confirm Password" v-model="confirmPassword" class="formInput">
+    <input type="email" :placeholder="$t('authForm.email')" v-model="email" class="formInput">
+    <input type="password" :placeholder="$t('authForm.password')" v-model="password" class="formInput">
+    <input type="password" :placeholder="$t('authForm.passwordConfirmation')" v-model="confirmPassword" class="formInput">
     <button
         class="my-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
-      Sign Up
+      {{ $t('authForm.register') }}
     </button>
   </form>
 </template>
