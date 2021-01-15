@@ -1,7 +1,12 @@
 {
+  "uiTheme" :  {
+    "darkMode": "حالت تیره",
+    "lightMode": "حالت روشن"
+  },
   "authForm": {
     "login": "ورود",
     "register": "عضویت",
+    "username": "نام کاربری",
     "email": "ایمیل",
     "password": "رمز عبور",
     "passwordConfirmation": "تایید رمز عبور"

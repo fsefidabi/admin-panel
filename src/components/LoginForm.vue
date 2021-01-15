@@ -11,26 +11,32 @@
 </template>
 
 <script>
-  import {useStore} from 'vuex'
   import {useRouter} from 'vue-router'
+  import axios from 'axios'
 
   export default {
     name: 'LoginForm',
     setup () {
-      const store = useStore()
       const router = useRouter()
       const email = ''
       const password = ''
 
-      function login () {
+      async function login () {
         let email = this.email
         let password = this.password
-        store.dispatch('Auth/retrieveToken', {email, password})
-            .then(() => {
-              router.push('/login')
-              console.log('dispatch done successfully')
-            })
-            .catch(err => console.log('dispatch failed ', err))
+        try {
+          const res = await axios.post('http://localhost:1337/auth/local', {identifier: email, password:
+            password})
+          localStorage.setItem('user', JSON.stringify(res.data.user))
+          localStorage.setItem('jwt', res.data.jwt)
+          await router.push('/dashboard')
+        } catch (err) {
+          if (err.response.data.data[0].messages[0].message.includes('Identifier or password invalid')) {
+            alert('Incorrect email or password')
+          } else {
+            alert('It seems something bad has happened. Please try again later.')
+          }
+        }
       }
 
       return {

@@ -1,17 +1,24 @@
 import {createStore} from 'vuex'
-import {AuthModule} from '@/store/Auth'
-import {AppModule} from '@/store/App'
 
 const store = createStore({
-  state: {},
+  state: {
+    isDarkMode: false
+  },
   
-  mutations: {},
+  mutations: {
+    SWITCH_UI_MODE (state) {
+      state.isDarkMode = !state.isDarkMode
+    }
+  },
   
-  actions: {},
+  actions: {
+    switchUiMode ({commit}) {
+      commit('SWITCH_UI_MODE')
+    }
+  },
   
   modules: {
-    Auth: AuthModule,
-    App: AppModule
+
   }
 })
 

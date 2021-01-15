@@ -21,7 +21,7 @@
       </div>
       <div id="signOutBtn"
            class="absolute hidden right-0 top-full py-2 px-3 rounded-3xl bg-gray-500 bg-opacity-70 light-text">
-        <button @click="logout" class="focus:outline-none">{{$t('statusBar.signOutButton')}}</button>
+        <button @click="logout" class="focus:outline-none">{{ $t('statusBar.signOutButton') }}</button>
       </div>
     </div>
   </div>
@@ -29,14 +29,13 @@
 
 <script>
   import {useRouter} from 'vue-router'
-  import {useStore} from 'vuex'
   import {useI18n} from 'vue-i18n'
+  import axios from 'axios'
 
   export default {
     name: 'StatusBar',
     setup () {
       const router = useRouter()
-      const store = useStore()
       const i18n = useI18n()
 
       function showSignOutLabel () {
@@ -48,11 +47,11 @@
       }
 
       function logout () {
-        store.dispatch('Auth/logout')
-            .then(() => {
-              console.log('logged out successfully.')
-              router.push('/')
-            })
+        localStorage.removeItem('user')
+        localStorage.removeItem('jwt')
+        delete axios.defaults.headers.common['Authorization']
+        router.push('/')
+
       }
 
       function switchLocale (lang) {

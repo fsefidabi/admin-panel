@@ -12,22 +12,6 @@ const routes = [
     component: Auth
   },
   {
-    path: '/login',
-    name: 'Auth',
-    component: Auth,
-    meta: {
-      guest: true
-    }
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Auth,
-    meta: {
-      guest: true
-    }
-  },
-  {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
@@ -70,16 +54,16 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (localStorage.getItem('jwt') == null) {
+    if (localStorage.getItem('jwt') === null) {
       alert('Access to this page requires admin authentication.')
       next({
-        path: '/dashboard',
-        params: {nextUrl: to.fullPath}
+        path: '/',
       })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))
+      console.log(user)
       if (to.matched.some(record => record.meta.is_admin)) {
-        if (user.is_admin == 1) {
+        if (user.role.name == 'Admin') {
           next()
         } else {
           alert('Access to this page requires admin authentication.')

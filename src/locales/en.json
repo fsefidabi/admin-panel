@@ -1,7 +1,12 @@
 {
+  "uiTheme" :  {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
   "authForm": {
     "login": "Sign In",
     "register": "Sign Up",
+    "username": "Username",
     "email": "Email",
     "password": "Password",
     "passwordConfirmation": "Confirm Password"
