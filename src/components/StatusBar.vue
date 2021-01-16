@@ -7,12 +7,7 @@
     </div>
 
     <div class="w-44 flex justify-between items-center relative" @mouseleave="hideSignOutLabel">
-      <button v-if="$i18n.locale === 'en'" @click="switchLocale($i18n.locale)" class="focus:outline-none">
-        <flag :iso="'ir'" :squared=false />
-      </button>
-      <button v-if="$i18n.locale === 'fa'" @click="switchLocale($i18n.locale)" class="focus:outline-none">
-        <flag :iso="'us'" :squared=false />
-      </button>
+      <I18nButton />
       <i class="fa fa-bell-o text-xl cursor-pointer"></i>
       <i class="fa fa-comment-o text-xl cursor-pointer"></i>
       <div id="userImage" class="w-9 h-9 rounded-3xl border cursor-pointer overflow-hidden"
@@ -29,14 +24,14 @@
 
 <script>
   import {useRouter} from 'vue-router'
-  import {useI18n} from 'vue-i18n'
   import axios from 'axios'
+  import I18nButton from './I18nBtn'
 
   export default {
     name: 'StatusBar',
+    components: {I18nButton},
     setup () {
       const router = useRouter()
-      const i18n = useI18n()
 
       function showSignOutLabel () {
         document.getElementById('signOutBtn').classList.remove('hidden')
@@ -54,19 +49,10 @@
 
       }
 
-      function switchLocale (lang) {
-        if (lang === 'en') {
-          i18n.locale.value = 'fa'
-        } else {
-          i18n.locale.value = 'en'
-        }
-      }
-
       return {
         showSignOutLabel,
         hideSignOutLabel,
         logout,
-        switchLocale
       }
     }
 

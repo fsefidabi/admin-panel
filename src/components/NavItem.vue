@@ -1,7 +1,7 @@
 <template>
   <ul class="w-full">
     <li id="nav-item" v-for="(item, index) of navItems" :key="index"
-        class="relative py-2 lg:py-3.5 pl-5 lg:pl-4 xl:pl-7 my-1 cursor-pointer rounded-3xl md:rounded-l-3xl md:rounded-r-none light-text text-center md:text-left"
+        class="relative my-1 py-2 lg:py-3.5 pl-6 cursor-pointer rounded-3xl md:rounded-l-3xl md:rounded-r-none light-text text-center md:text-left"
         :class="[currentTab === $t(item.name) ? 'panel-background main-text-color font-bold':
         'hover:bg-pink-50 hover:bg-opacity-10 duration-500 light-font']"
         @click="updateCurrentTab(item)">

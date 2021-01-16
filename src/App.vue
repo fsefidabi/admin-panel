@@ -1,24 +1,20 @@
 <template>
-  <div class="w-screen min-h-screen" :class="{dark: isDarkMode}">
-    <div
-        class="w-full h-full flex flex-col md:flex-row justify-center mx-auto p-6 background main-text-color">
-      <Navbar />
-      <MainPanel class="panel-background"/>
+  <div :class="{dark: isDarkMode}">
+    <div class="w-screen min-h-screen flex flex-col justify-center items-center background main-text-color">
       <DarkModeBtn class="fixed bottom-5 right-5" :dark-mode="isDarkMode" :theme="state.theme"
-                   @switch-theme="toggleTheme"/>
+                   @switch-theme="toggleTheme" />
+      <router-view />
     </div>
   </div>
 </template>
-
 <script>
   import {computed, reactive} from 'vue'
   import {useStore} from 'vuex'
   import {useI18n} from 'vue-i18n'
-  import Navbar from '@/components/Navbar'
-  import MainPanel from '@/views/MainPanel'
   import DarkModeBtn from '@/components/DarkModeBtn'
+
   export default {
-    components: {DarkModeBtn, MainPanel, Navbar},
+    components: {DarkModeBtn},
     setup () {
       const store = useStore()
       const i18n = useI18n()
@@ -38,6 +34,7 @@
         } else {
           state.theme = lightTheme
         }
+        console.log(isDarkMode)
       }
 
       return {

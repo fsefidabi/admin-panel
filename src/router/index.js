@@ -3,47 +3,48 @@ import Dashboard from '../views/Dashboard.vue'
 import Users from '@/views/Users'
 import Pages from '@/views/Pages'
 import Archive from '@/views/Archive'
-import Auth from '@/components/Auth'
+import UserPanel from '@/views/UserPanel'
+import Home from '@/views/Home'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Auth
+    component: Home
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
+    path: '/',
+    component: UserPanel,
+    children: [
+      {
+        path: '/dashboard',
+        component: Dashboard
+      },
+      {
+        path: '/pages',
+        component: Pages
+      },
+      {
+        path: '/users',
+        component: Users,
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
+      },
+      {
+        path: '/archive',
+        component: Archive,
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
+      }
+    ],
     meta: {
       requiresAuth: true
     }
-  },
-  {
-    path: '/pages',
-    name: 'Pages',
-    component: Pages,
-    meta: {
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/users',
-    name: 'Users',
-    component: Users,
-    meta: {
-      requiresAuth: true,
-      is_admin: true
-    }
-  },
-  {
-    path: '/archive',
-    name: 'Archive',
-    component: Archive,
-    meta: {
-      requiresAuth: true,
-      is_admin: true
-    }
+    
   }
 ]
 
@@ -57,7 +58,7 @@ router.beforeEach((to, from, next) => {
     if (localStorage.getItem('jwt') === null) {
       alert('Access to this page requires admin authentication.')
       next({
-        path: '/',
+        path: '/'
       })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))

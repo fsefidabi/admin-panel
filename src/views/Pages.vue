@@ -1,5 +1,5 @@
 <template>
-  <div>pages</div>
+  <div class="w-full">pages</div>
 </template>
 
 <script>
