@@ -1,5 +1,9 @@
 {
-  "uiTheme" :  {
+  "languages": {
+    "en": "انگلیسی",
+    "fa": "فارسی"
+  },
+  "uiTheme": {
     "darkMode": "حالت تیره",
     "lightMode": "حالت روشن"
   },
@@ -13,7 +17,7 @@
   },
   "navbar": {
     "websiteLogo": "لوگو",
-    "navItems" : {
+    "navItems": {
       "dashboard": "پنل کاربری",
       "pages": "صفحات",
       "users": "کاربرها",
@@ -27,17 +31,34 @@
   "dashboard": {
     "title": "گزارش عمومی",
     "cards": {
-      "newUsersCard" : {
+      "newUsersCard": {
         "title": "کاربران جدید"
       },
       "newOrdersCard": {
         "title": "سفارش های جدید"
       },
-      "totalProductsCard" : {
+      "totalProductsCard": {
         "title": "تعداد کل محصولات"
       },
       "monthlyProfitCard": {
         "title": "سود ماهانه"
+      }
+    },
+    "incomeChart": {
+      "title": "درآمد ماهیانه",
+      "months": {
+        "Jan": "ژانویه",
+        "Feb": "فوریه",
+        "Mar": "مارچ",
+        "Apr": "اپریل",
+        "May": "می",
+        "Jun": "جون",
+        "Jul": "جولای",
+        "Aug": "آگوست",
+        "Sep": "سپتامبر",
+        "Oct": "اوکتبر",
+        "Nov": "نوامبر",
+        "Dec": "دسامبر"
       }
     }
   }

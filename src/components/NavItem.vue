@@ -1,20 +1,20 @@
 <template>
-  <ul class="w-full">
-    <li id="nav-item" v-for="(item, index) of navItems" :key="index"
-        class="relative my-1 py-2 lg:py-3.5 pl-6 cursor-pointer rounded-3xl md:rounded-l-3xl md:rounded-r-none light-text text-center md:text-left"
-        :class="[currentTab === $t(item.name) ? 'panel-background main-text-color font-bold':
-        'hover:bg-pink-50 hover:bg-opacity-10 duration-500 light-font']"
+  <ul class="w-full flex flex-col md:flex-row items-center ">
+    <li v-for="(item, index) of navItems" :key="index"
+        class="relative inline-block py-2 lg:py-3.5 px-6 rtl:pr-6 cursor-pointer rounded-2xl md:rounded-t-2xl md:rounded-b-none light-text text-center md:text-left"
+        :class="[state.currentTab === $t(item.name) ? 'panel-background main-text-color font-bold':
+        'hover:bg-pink-50 hover:bg-opacity-20 duration-500 light-font']"
         @click="updateCurrentTab(item)">
-      <NavItemSector class="hidden md:block transform translate-x-0 -translate-y-full rotate-90 top-0"
-                     v-if="currentTab === $t(item.name)"/>
-      <router-link :to=" item.path" class="inline-block w-full h-full">
+      <NavItemSector class="hidden md:block transform translate-x-full rotate-180 right-0"
+                     v-if="state.currentTab === $t(item.name)"/>
+      <router-link :to="`/${item.path}`" class="inline-block w-full h-full">
         <span>
           <i :class="'fa fa-' + item.icon"></i>
         </span>
-        <span class="inline md:hidden lg:inline ml-3 xl:ml-6">{{ $t(item.name) }}</span>
+        <span class="inline md:hidden lg:inline mx-5 rtl:ml-0">{{ $t(item.name) }}</span>
       </router-link>
-      <NavItemSector class="hidden md:block transform translate-x-0 translate-y-0 rotate-0 top-full"
-                     v-if="currentTab === $t(item.name)"/>
+      <NavItemSector class="hidden md:block transform -translate-x-full rotate-90 left-0"
+                     v-if="state.currentTab === $t(item.name)"/>
     </li>
   </ul>
 </template>
@@ -22,60 +22,59 @@
 <script>
   import NavItemSector from '@/components/NavItemSector'
   import {useI18n} from 'vue-i18n'
-  import {computed } from 'vue'
+  import {reactive, computed, ref, watch} from 'vue'
+  import {useRouter} from 'vue-router'
 
   export default {
     name: 'NavItem',
     components: {NavItemSector},
     setup () {
+      const router = useRouter()
       const i18n = useI18n()
+      const locale = ref(i18n.locale)
+
       const navItems = computed(() =>
           [
             {
               name: 'navbar.navItems.dashboard',
               icon: 'home',
-              path: '/dashboard'
+              path: 'dashboard'
             },
             {
               name: 'navbar.navItems.pages',
               icon: 'file',
-              path: '/pages'
+              path: 'pages'
             },
             {
               name: 'navbar.navItems.users',
               icon: 'users',
-              path: '/users'
+              path: 'users'
             },
             {
               name: 'navbar.navItems.archive',
               icon: 'archive',
-              path: '/archive'
+              path: 'archive'
             }
           ]
       )
 
-      // const state = reactive({
-      //   currentTab: i18n.t('navbar.navItems.dashboard')
-      // })
+      const state = reactive({
+        currentTab: i18n.t('navbar.navItems.dashboard')
+      })
 
-      let currentTab = computed(() => i18n.t('navbar.navItems.dashboard'))
+      watch(locale, (newVal, oldVal) => {
+        if (oldVal !== newVal) {
+          router.push('/dashboard')
+          state.currentTab = i18n.t('navbar.navItems.dashboard', newVal)
+        }
+      })
 
       function updateCurrentTab (item) {
-        console.log(currentTab)
-        currentTab = i18n.t(item.name)
-        console.log(currentTab)
+        state.currentTab = i18n.t(item.name)
       }
 
-      /* Its really funny!
-      * Using computed causes maintenance in switching language
-      * Using reactive causes reactivity in each language but lags when you switch lang
-      *
-      * I really hope ypo to find the problem!
-      */
-
       return {
-        // state,
-        currentTab,
+        state,
         navItems,
         updateCurrentTab
       }

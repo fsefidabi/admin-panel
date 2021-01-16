@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute w-3 h-3 lg:w-3 lg:h-3 xl:w-4 xl:h-4 right-0 bg-contain"
+  <div class="absolute w-3 h-3 lg:w-3 lg:h-3 xl:w-4 xl:h-4 -translate-y-full top-full bg-contain"
        :class="[isDarkMode === false ? 'bg-light-nav-item-sector' : 'bg-dark-nav-item-sector']"></div>
 </template>
 

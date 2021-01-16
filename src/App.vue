@@ -1,9 +1,8 @@
 <template>
   <div :class="{dark: isDarkMode}">
     <div class="w-screen min-h-screen flex flex-col justify-center items-center background main-text-color">
-      <DarkModeBtn class="fixed bottom-5 right-5" :dark-mode="isDarkMode" :theme="state.theme"
-                   @switch-theme="toggleTheme" />
-      <router-view />
+      <router-view :dark-mode="isDarkMode" :theme="state.theme"
+                   @toggle-theme="toggleTheme"/>
     </div>
   </div>
 </template>
@@ -11,10 +10,8 @@
   import {computed, reactive} from 'vue'
   import {useStore} from 'vuex'
   import {useI18n} from 'vue-i18n'
-  import DarkModeBtn from '@/components/DarkModeBtn'
 
   export default {
-    components: {DarkModeBtn},
     setup () {
       const store = useStore()
       const i18n = useI18n()
@@ -34,7 +31,6 @@
         } else {
           state.theme = lightTheme
         }
-        console.log(isDarkMode)
       }
 
       return {

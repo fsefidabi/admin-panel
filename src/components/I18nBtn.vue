@@ -14,7 +14,7 @@
 
   export default {
     name: 'I18nButton',
-    setup() {
+    setup () {
       const i18n = useI18n()
 
       function switchLocale (lang) {

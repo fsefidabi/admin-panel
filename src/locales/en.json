@@ -1,4 +1,8 @@
 {
+  "languages": {
+    "en": "English",
+    "fa": "Farsi"
+  },
   "uiTheme" :  {
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode"
@@ -38,6 +42,23 @@
       },
       "monthlyProfitCard": {
         "title": "Monthly Profit"
+      }
+    },
+    "incomeChart": {
+      "title": "Monthly Income",
+      "months": {
+        "Jan": "January",
+        "Feb": "February",
+        "Mar": "March",
+        "Apr": "April",
+        "May": "May",
+        "Jun": "June",
+        "Jul": "July",
+        "Aug": "August",
+        "Sep": "September",
+        "Oct": "October",
+        "Nov": "November",
+        "Dec": "December"
       }
     }
   }

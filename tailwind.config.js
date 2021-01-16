@@ -23,6 +23,19 @@ module.exports = {
     extend: {
       margin: ['first', 'last']
     },
+    float: ['responsive', 'direction'],
+    margin: ['responsive', 'direction'],
+    padding: ['responsive', 'direction'],
+    flex: ['responsive', 'direction'],
+    flexDirection: ['responsive', 'direction'],
+    justifyContent: ['responsive', 'direction'],
+    justifyItems: ['responsive', 'direction'],
+    justifySelf: ['responsive', 'direction'],
+    order: ['responsive', 'direction'],
+    textAlign: ['responsive', 'direction'],
+    inset: ['responsive', 'direction']
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-dir')()
+  ],
 }

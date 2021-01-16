@@ -15,8 +15,8 @@
 
       </div>
     </div>
-    <div class="w-full h-80 mt-10 border text-3xl">
-      chart
+    <div class="md:w-1/2 mt-10 border text-3xl">
+      <IncomeChart :height="200"/>
     </div>
   </div>
 </template>
@@ -25,13 +25,13 @@
   import CardComponent from '@/components/CardComponent'
   import {useI18n} from 'vue-i18n'
   import {computed, reactive} from 'vue'
+  import IncomeChart from '../components/IncomeChart'
 
   export default {
     name: 'Dashboard',
-    components: {CardComponent},
+    components: {IncomeChart, CardComponent},
     setup () {
       const i18n = useI18n()
-
       const state = reactive({
         cardWidgets: [
           {
