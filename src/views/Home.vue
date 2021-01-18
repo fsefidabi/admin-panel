@@ -16,7 +16,7 @@
 
     <div class="flex justify-center items-center">
       <DarkModeBtn :dark-mode="darkMode" :theme="theme" @switch-theme="$emit('toggleTheme')" />
-      <I18nButton class="ml-5" />
+      <I18nButton class="ml-5 rtl:mr-5" />
     </div>
   </div>
 </template>
@@ -33,6 +33,7 @@
     name: 'Auth',
     components: {DarkModeBtn, I18nButton, RegistrationForm, LoginForm},
     props: ['darkMode', 'theme'],
+    emits: ['toggleTheme'],
     setup () {
       const i18n = useI18n()
       const locale = ref(i18n.locale)

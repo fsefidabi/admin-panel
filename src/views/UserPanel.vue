@@ -13,33 +13,15 @@
 </template>
 
 <script>
-  import {computed, ref, watch} from 'vue'
-  import {useI18n} from 'vue-i18n'
   import StatusBar from '@/components/StatusBar'
   import Navbar from '@/components/Navbar'
   import DarkModeBtn from '../components/DarkModeBtn'
-  import {useStore} from 'vuex'
 
   export default {
     name: 'MainPanel',
     components: {DarkModeBtn, StatusBar, Navbar},
-    props: ['darkMode', 'theme'],
-    setup () {
-      const store = useStore()
-      const i18n = useI18n()
-      const locale = ref(i18n.locale)
-      const dir = computed(() => store.state.dir)
-
-      watch(locale, (newVal, oldVal) => {
-        if (oldVal !== newVal) {
-          store.dispatch('changeDirection', newVal)
-        }
-      })
-
-      return {
-        dir
-      }
-    }
+    props: ['darkMode', 'theme', 'dir'],
+    emits: ['toggleTheme']
   }
 </script>
 

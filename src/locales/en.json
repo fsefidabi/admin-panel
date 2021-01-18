@@ -7,13 +7,26 @@
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode"
   },
+  "routes": {
+    "errors" :  {
+      "requiresAuth": "Please login first.",
+      "requiresAdmin": "Access to this page requires admin authentication."
+    }
+  },
   "authForm": {
     "login": "Sign In",
     "register": "Sign Up",
     "username": "Username",
     "email": "Email",
     "password": "Password",
-    "passwordConfirmation": "Confirm Password"
+    "passwordConfirmation": "Confirm Password",
+    "errors": {
+      "wrongInput": "Incorrect email or password",
+      "required_email": "Email is required",
+      "required_password": "Password is required",
+      "wrongPasswordConfirmation": "Password confirmation doesn't match password",
+      "generalError": "It seems something bad has happened. Please try again later."
+    }
   },
   "navbar": {
     "websiteLogo": "Logo",

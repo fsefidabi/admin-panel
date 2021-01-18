@@ -7,13 +7,26 @@
     "darkMode": "حالت تیره",
     "lightMode": "حالت روشن"
   },
+  "routes": {
+    "errors" :  {
+      "requiresAuth": "لطفا ابتدا وارد حساب کاربری خود شوید.",
+      "requiresAdmin": "شما اجازه دسترسی به این صفحه را ندارید."
+    }
+  },
   "authForm": {
     "login": "ورود",
     "register": "عضویت",
     "username": "نام کاربری",
     "email": "ایمیل",
     "password": "رمز عبور",
-    "passwordConfirmation": "تایید رمز عبور"
+    "passwordConfirmation": "تایید رمز عبور",
+    "errors": {
+      "wrongInput": "ایمیل یا رمز عبور وارد شده اشتباه است",
+      "required_email": "وارد کردن ایمیل ضروری است.",
+      "required_password": "وارد کردن رمز کاربری ضروری است.",
+      "wrongPasswordConfirmation": "تکرار رمز عبور اشتباه است.",
+      "generalError": "خطایی رخ داده است. لطفا مجدد وارد شوید."
+    }
   },
   "navbar": {
     "websiteLogo": "لوگو",

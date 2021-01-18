@@ -1,58 +1,63 @@
 <template>
-  <form @submit.prevent="register" novalidate="true"
-        class="flex flex-col justify-center items-center pt-6">
-    <input name="username" type="text" v-model="username" :placeholder="$t('authForm.username')" @invalid="isRequired"
-    class="formInput">
-    <input name="email" type="email" v-model="email" :placeholder="$t('authForm.email')" class="formInput">
-    <input name="password" type="password" v-model="password" :placeholder="$t('authForm.password')"
-           class="formInput">
-    <input type="password" v-model="confirmPassword" :placeholder="$t('authForm.passwordConfirmation')"
-           class="formInput">
-    <button
-        class="my-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
-      {{ $t('authForm.register') }}
-    </button>
-  </form>
+  <VeeForm v-slot="{ handleSubmit }" as="div">
+    <form @submit="handleSubmit($event, register)" class="flex flex-col justify-center items-center pt-6">
+      <div class="w-3/4 h-20">
+        <Field name="username" type="text" :placeholder="$t('authForm.username')" class="formInput"
+               rules="required"/>
+        <ErrorMessage name="username" class="text-red-500 text-sm"/>
+      </div>
+
+      <div class="w-3/4 h-20">
+        <Field name="email" type="email" :placeholder="$t('authForm.email')"
+               class="formInput" rules="required|email"/>
+        <ErrorMessage name="email" class="text-red-500 text-sm"/>
+      </div>
+
+      <div class="w-3/4 h-20">
+        <Field type="password" :placeholder="$t('authForm.password')" name="password"
+               class="formInput" rules="required|min:2"/>
+        <ErrorMessage name="password" class="text-red-500 text-sm"/>
+      </div>
+
+      <div class="w-3/4 h-20">
+        <Field type="password" :placeholder="$t('authForm.passwordConfirmation')" name="passwordConfirmation"
+               class="formInput"/>
+        <ErrorMessage class="text-red-500 text-sm"/>
+      </div>
+
+      <button
+          class="mt-4 mb-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
+        {{ $t('authForm.register') }}
+      </button>
+
+    </form>
+  </VeeForm>
+
 </template>
 
 <script>
   import {useRouter} from 'vue-router'
   import axios from 'axios'
-
+  import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
   export default {
     name: 'registrationForm',
+    components: {VeeForm, Field, ErrorMessage},
     setup () {
       const router = useRouter()
-      const username = ''
-      const email = ''
-      const password = ''
-      const confirmPassword = ''
 
-      function isRequired(value) {
-        if (value) {
-          return true
-        }
-        console.log('*required')
-      }
-
-      async function register () {
+      async function register (values) {
+        console.log(values)
         let role = 'Authenticated'
-        let username = this.username
-        let email = this.email
-        let password = this.password
-        let confirmPassword = this.confirmPassword
-        if (confirmPassword !== password) {
-          alert('password confirmation doesn\'t match password')
-        }
-        if (username.includes('admin')) {
+
+        if (values.username.includes('admin')) {
           role = 'Admin'
         }
         try {
           const res = await axios.post('http://localhost:1337/auth/local/register',
               {
-                username: username,
-                email: email,
-                password: password,
+                username: values.username,
+                email: values.email,
+                password: values.password,
                 role: role
               })
           localStorage.setItem('user', JSON.stringify(res.data.user))
@@ -69,13 +74,15 @@
         }
       }
 
+      // function equality (value) {
+      //   if (value !== values.password) {
+      //     alert('password confirmation doesn\'t match password')
+      //   }
+      // }
+
       return {
-        isRequired,
-        username,
-        email,
-        password,
-        confirmPassword,
         register,
+        // equality
       }
     }
   }
