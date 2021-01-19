@@ -15,7 +15,7 @@
 <script>
   import StatusBar from '@/components/StatusBar'
   import Navbar from '@/components/Navbar'
-  import DarkModeBtn from '../components/DarkModeBtn'
+  import DarkModeBtn from '@/components/DarkModeBtn'
 
   export default {
     name: 'MainPanel',

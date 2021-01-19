@@ -1,6 +1,7 @@
 <template>
-  <VeeForm v-slot="{ handleSubmit }" as="div">
+  <VeeForm v-slot="{ handleSubmit }" as="div" >
     <form @submit="handleSubmit($event, register)" class="flex flex-col justify-center items-center pt-6">
+
       <div class="w-3/4 h-20">
         <Field name="username" type="text" rules="required" :placeholder="$t('authForm.username')" class="formInput" />
         <ErrorMessage name="username" class="text-red-500 text-xs"/>
@@ -23,8 +24,7 @@
         <ErrorMessage name="confirmation" class="text-red-500 text-xs"/>
       </div>
 
-      <button
-          class="mt-4 mb-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
+      <button class="mt-4 mb-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
         {{ $t('authForm.register') }}
       </button>
 
@@ -36,10 +36,9 @@
 <script>
   import {useRouter} from 'vue-router'
   import {useI18n} from 'vue-i18n'
-  import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
   import axios from 'axios'
+  import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
   import Swal from 'sweetalert2'
-
 
   export default {
     name: 'registrationForm',
@@ -49,8 +48,6 @@
       const i18n = useI18n()
 
       async function register (values, actions) {
-        console.log(values)
-        console.log(actions)
         let role = 'Authenticated'
 
         if (values.username.includes('admin')) {
@@ -80,15 +77,11 @@
           }
           await router.push('/dashboard')
         } catch (err) {
-          console.log(err.response.data.data[0].messages[0])
           if (err.response.data.data[0].messages[0].message.includes('Username already taken')) {
             actions.setFieldError('username', 'This username has already been token.')
-            // alert('Please choose another username. This username has already been token.')
           } else if (err.response.data.data[0].messages[0].message.includes('Please provide valid email address')) {
             actions.setFieldError('email', 'Please provide valid email address.')
-            // alert('Please provide valid email address.')
           } else if (err.response.data.data[0].messages[0].message.includes('Email is already taken')) {
-            // alert('This email has already been registered.')
             actions.setFieldError('email', 'This email has already been registered.')
           }
         }

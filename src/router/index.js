@@ -1,33 +1,29 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
-import Swal from 'sweetalert2'
-import Users from '@/views/Users'
-import Pages from '@/views/Pages'
-import Archive from '@/views/Archive'
-import UserPanel from '@/views/UserPanel'
-import Home from '@/views/Home'
 import i18n from '@/plugins/i18n'
+import Swal from 'sweetalert2'
+import Home from '@/views/Home'
+import UserPanel from '@/views/UserPanel'
+import Dashboard from '../views/Dashboard.vue'
+import Pages from '@/views/Pages'
+import Users from '@/views/Users'
+import Archive from '@/views/Archive'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
-  },
-  {
-    path: '/login',
-    name: 'Login'
+    component: Home,
   },
   {
     path: '/',
     component: UserPanel,
     children: [
       {
-        path: '/dashboard',
+        path: 'dashboard',
         component: Dashboard
       },
       {
-        path: '/pages',
+        path: 'pages',
         component: Pages
       },
       {
@@ -60,6 +56,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (to.fullPath === '/' && localStorage.getItem('jwt')) {
+    next({ path: '/dashboard' })
+  }
+  
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (localStorage.getItem('jwt') === null) {
       Swal.fire({
@@ -71,9 +71,7 @@ router.beforeEach((to, from, next) => {
         showConfirmButton: false,
         showCloseButton: true
       })
-      next({
-        path: '/'
-      })
+      next({ path: '/' })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))
       console.log(user)
@@ -90,7 +88,6 @@ router.beforeEach((to, from, next) => {
             showConfirmButton: false,
             showCloseButton: true
           })
-          next({path: '/dashboard'})
         }
       } else {
         next()
@@ -100,12 +97,11 @@ router.beforeEach((to, from, next) => {
     if (localStorage.getItem('jwt') === null) {
       next()
     } else {
-      next({path: '/dashboard'})
+      next({ path: '/dashboard' })
     }
   } else {
     next()
   }
-  console.log(i18n.global.locale)
 })
 
 export default router

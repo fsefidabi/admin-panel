@@ -2,8 +2,7 @@
   <div class="flex-col flex-wrap">
     <h2 class="mb-7 text-lg font-bold">{{ $t('dashboard.title') }}</h2>
     <div class="flex justify-between flex-wrap lg:flex-nowrap w-full">
-      <div v-for="(cardItem, index) in state.cardWidgets" :key="index"
-           class="my-5 w-full sm:w-9/19 lg:w-3/13">
+      <div v-for="(cardItem, index) in state.cardWidgets" :key="index" class="my-5 w-full sm:w-9/19 lg:w-3/13">
         <CardComponent
             :title="cardItem.title"
             :icon="cardItem.icon"
@@ -12,7 +11,6 @@
             :difference="cardItem.difference"
             :rate-sign="'fa fa-angle-' + cardItem.rate"
         />
-
       </div>
     </div>
     <div class="md:w-1/2 mt-10 border text-3xl">
@@ -22,10 +20,10 @@
 </template>
 
 <script>
-  import CardComponent from '@/components/CardComponent'
   import {useI18n} from 'vue-i18n'
   import {computed, reactive} from 'vue'
-  import IncomeChart from '../components/IncomeChart'
+  import CardComponent from '@/components/CardComponent'
+  import IncomeChart from '@/components/IncomeChart'
 
   export default {
     name: 'Dashboard',
@@ -74,6 +72,8 @@
       }
     }
   }
-
-
 </script>
+
+<style>
+
+</style>

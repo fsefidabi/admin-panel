@@ -1,6 +1,7 @@
 <template>
   <VeeForm v-slot="{ handleSubmit }" as="div">
     <form @submit="handleSubmit($event, login)" class="flex flex-col justify-center items-center pt-6">
+
       <div class="w-3/4 h-20">
         <Field type="email" :placeholder="$t('authForm.email')" name="email" class="formInput"
                rules="required|email"/>
@@ -17,7 +18,6 @@
           class="mt-4 mb-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">
         {{ $t('authForm.login') }}
       </button>
-
     </form>
   </VeeForm>
 </template>
@@ -25,8 +25,8 @@
 <script>
   import {useRouter} from 'vue-router'
   import {useI18n} from 'vue-i18n'
-  import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
   import axios from 'axios'
+  import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
   import Swal from 'sweetalert2'
 
   export default {
@@ -36,8 +36,7 @@
       const router = useRouter()
       const i18n = useI18n()
 
-      async function login (values) {
-        console.log(values)
+      async function login (values, actions) {
         try {
           const res = await axios.post('http://localhost:1337/auth/local', {
             identifier: values.email,
@@ -48,7 +47,10 @@
           await router.push('/dashboard')
         } catch (err) {
           if (err.response.data.data[0].messages[0].message.includes('Identifier or password invalid')) {
-            console.log('err')
+            actions.setErrors({
+              email: 'Wrong email or password.',
+              password: 'Wrong email or password.'
+            })
           } else {
             Swal.fire({
               icon: 'error',

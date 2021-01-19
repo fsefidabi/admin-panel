@@ -1,14 +1,16 @@
 import {createStore} from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+import i18n, {selectedLocale} from '@/plugins/i18n'
 
 const store = createStore({
   state: {
-    isDarkMode: false,
-    dir: 'ltr'
+    locale: selectedLocale,
+    dir: 'ltr',
+    isDarkMode: false
   },
-  
   mutations: {
-    SWITCH_UI_MODE (state) {
-      state.isDarkMode = !state.isDarkMode
+    UPDATE_LOCALE (state, newLocale) {
+      state.locale = newLocale
     },
     CHANGE_DIRECTION (state, newVal) {
       if (newVal === 'fa') {
@@ -16,19 +18,25 @@ const store = createStore({
       } else {
         state.dir = 'ltr'
       }
+    },
+    SWITCH_UI_MODE (state) {
+      state.isDarkMode = !state.isDarkMode
     }
   },
-  
   actions: {
-    switchUiMode ({commit}) {
-      commit('SWITCH_UI_MODE')
+    updateLocale ({commit}, newLocale) {
+      i18n.global.locale = newLocale
+      commit('UPDATE_LOCALE', newLocale)
     },
     changeDirection ({commit}, newVal) {
       commit('CHANGE_DIRECTION', newVal)
+    },
+    switchUiMode ({commit}) {
+      commit('SWITCH_UI_MODE')
     }
   },
-  
-  modules: {}
+  modules: {},
+  plugins: [createPersistedState()]
 })
 
 export default store

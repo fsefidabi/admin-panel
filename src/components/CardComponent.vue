@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-wrap justify-end p-6 card-background rounded-2xl shadow-lg transform hover:-translate-y-2 duration-300">
+  <div
+      class="flex flex-wrap justify-end p-6 card-background rounded-2xl shadow-lg transform hover:-translate-y-2 duration-300">
     <div class="w-full flex items-center">
       <i :class="[icon, color]" class="text-3xl lg:text-lg xl:text-3xl 2xl:text-2xl"></i>
       <div class="mx-3 text-lg lg:text-sm xl:text-lg gray-font-color">{{ title }}</div>
