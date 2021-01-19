@@ -1,7 +1,7 @@
 <template>
   <div :class="{dark: isDarkMode}">
     <div class="w-screen min-h-screen flex flex-col justify-center items-center background main-text-color">
-      <router-view :dark-mode="isDarkMode" :theme="state.theme" :dir="dir" @toggle-theme="toggleTheme" />
+      <router-view :dark-mode="isDarkMode" :theme="state.theme" lang="fa" :dir="dir" @toggle-theme="toggleTheme" />
     </div>
   </div>
 </template>

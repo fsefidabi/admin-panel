@@ -5,13 +5,13 @@
       <div class="w-3/4 h-20">
         <Field type="email" :placeholder="$t('authForm.email')" name="email" class="formInput"
                rules="required|email"/>
-        <ErrorMessage name="email" class="text-red-500 text-xs leading-none"/>
+        <ErrorMessage name="email" class="inline-block w-full text-red-500 text-xs rtl:text-right leading-none"/>
       </div>
 
       <div class="w-3/4 h-20">
         <Field type="password" :placeholder="$t('authForm.password')" name="password"
-               class="formInput" rules="required|min:2"/>
-        <ErrorMessage name="password" class="text-red-500 text-xs"/>
+               class="formInput" rules="required"/>
+        <ErrorMessage name="password" class="inline-block w-full text-red-500 text-xs rtl:text-right leading-none"/>
       </div>
 
       <button
@@ -48,8 +48,8 @@
         } catch (err) {
           if (err.response.data.data[0].messages[0].message.includes('Identifier or password invalid')) {
             actions.setErrors({
-              email: 'Wrong email or password.',
-              password: 'Wrong email or password.'
+              email: i18n.t('authForm.alerts.wrongInput'),
+              password: i18n.t('authForm.alerts.wrongInput')
             })
           } else {
             Swal.fire({

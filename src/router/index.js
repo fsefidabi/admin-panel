@@ -1,9 +1,9 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import i18n from '@/plugins/i18n'
 import Swal from 'sweetalert2'
-import Home from '@/views/Home'
+import Auth from '@/views/Auth'
 import UserPanel from '@/views/UserPanel'
-import Dashboard from '../views/Dashboard.vue'
+import Dashboard from '@/views/Dashboard.vue'
 import Pages from '@/views/Pages'
 import Users from '@/views/Users'
 import Archive from '@/views/Archive'
@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Auth,
   },
   {
     path: '/',

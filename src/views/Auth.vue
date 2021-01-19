@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen h-screen flex flex-col justify-center items-center panel-background">
-    <div class="w-80 mb-5">
+    <div class="w-96 mb-5">
       <button v-for="tab in tabs" :key="tab"
             class="w-1/2 py-3 rounded-t-md outline-none focus:outline-none duration-500 shadow-sm shadow-inner shadow-2xl"
             :class="[state.currentTab === tab ? 'bg-indigo-500 font-bold light-text border-2 border-gray-200' :
@@ -14,7 +14,7 @@
     </div>
 
     <div class="flex justify-center items-center">
-      <DarkModeBtn :dark-mode="darkMode" :theme="theme" @switch-theme="$emit('toggleTheme')" />
+      <SwitchButton :dark-mode="darkMode" :theme="theme" @switch-theme="$emit('toggleTheme')" />
       <I18nButton class="ml-5 rtl:mr-5" />
     </div>
   </div>
@@ -26,11 +26,11 @@
   import LoginForm from '@/components/LoginForm'
   import RegistrationForm from '@/components/registrationForm'
   import I18nButton from '@/components/I18nBtn'
-  import DarkModeBtn from '@/components/DarkModeBtn'
+  import SwitchButton from '@/components/SwitchButton'
 
   export default {
     name: 'Auth',
-    components: {DarkModeBtn, I18nButton, RegistrationForm, LoginForm},
+    components: {SwitchButton, I18nButton, RegistrationForm, LoginForm},
     props: ['darkMode', 'theme'],
     emits: ['toggleTheme'],
     setup () {

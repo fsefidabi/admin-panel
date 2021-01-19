@@ -4,24 +4,24 @@
 
       <div class="w-3/4 h-20">
         <Field name="username" type="text" rules="required" :placeholder="$t('authForm.username')" class="formInput" />
-        <ErrorMessage name="username" class="text-red-500 text-xs"/>
+        <ErrorMessage name="username" class="inline-block w-full text-red-500 text-xs rtl:text-right leading-none"/>
       </div>
 
       <div class="w-3/4 h-20">
         <Field name="email" type="email" rules="required|email" :placeholder="$t('authForm.email')"
                class="formInput" />
-        <ErrorMessage name="email" class="text-red-500 text-xs"/>
+        <ErrorMessage name="email" class="inline-block w-full text-red-500 text-xs rtl:text-right leading-none"/>
       </div>
 
       <div class="w-3/4 h-20">
-        <Field name="password" type="password" rules="required|min:2" :placeholder="$t('authForm.password')" class="formInput" />
-        <ErrorMessage name="password" class="text-red-500 text-xs"/>
+        <Field name="password" type="password" rules="required|min:5" :placeholder="$t('authForm.password')" class="formInput" />
+        <ErrorMessage name="password" class="inline-block w-full text-red-500 text-xs rtl:text-right leading-none"/>
       </div>
 
       <div class="w-3/4 h-20">
         <Field name="confirmation" type="password" rules="required|confirmed:@password"
                :placeholder="$t('authForm.passwordConfirmation')" class="formInput" />
-        <ErrorMessage name="confirmation" class="text-red-500 text-xs"/>
+        <ErrorMessage name="confirmation" class="inline-block w-full text-red-500 text-xs rtl:text-right leading-none"/>
       </div>
 
       <button class="mt-4 mb-7 py-2.5 px-4 rounded-md bg-red-500 light-text font-bold outline-none focus:outline-none hover:bg-red-600">

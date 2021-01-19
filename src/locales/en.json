@@ -21,10 +21,11 @@
     "password": "Password",
     "passwordConfirmation": "Confirm Password",
     "alerts": {
-      "wrongInput": "Incorrect email or password",
-      "required_email": "Email is required",
-      "required_password": "Password is required",
-      "wrongPasswordConfirmation": "Password confirmation doesn't match password",
+      "required": "*required",
+      "email": "Please enter a valid email.",
+      "confirmation": "Password confirmation doesn't match password.",
+      "min": "The password field must be at least 5 characters.",
+      "wrongInput": "Incorrect email or password.",
       "generalError": "It seems something bad has happened. Please try again later.",
       "successfulRegistration": {
         "title": "Registration completed successfully",
