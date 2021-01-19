@@ -7,7 +7,7 @@ import store from './store/index'
 import './assets/index.css'
 import i18n from './plugins/i18n'
 import {defineRule} from 'vee-validate'
-import {required, email, min} from '@vee-validate/rules'
+import {required, email, min, confirmed} from '@vee-validate/rules'
 import {localize} from '@vee-validate/i18n'
 import { configure } from 'vee-validate'
 import en from '@vee-validate/i18n/dist/locale/en.json'
@@ -16,6 +16,7 @@ import fa from '@vee-validate/i18n/dist/locale/fa.json'
 createApp(App).use(VueFinalModal()).use(FlagIcon).use(i18n).use(store).use(router).mount('#app')
 
 defineRule('required', required)
+defineRule('confirmed', confirmed)
 defineRule('email', email)
 defineRule('min', min)
 

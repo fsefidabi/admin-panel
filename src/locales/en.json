@@ -20,12 +20,16 @@
     "email": "Email",
     "password": "Password",
     "passwordConfirmation": "Confirm Password",
-    "errors": {
+    "alerts": {
       "wrongInput": "Incorrect email or password",
       "required_email": "Email is required",
       "required_password": "Password is required",
       "wrongPasswordConfirmation": "Password confirmation doesn't match password",
-      "generalError": "It seems something bad has happened. Please try again later."
+      "generalError": "It seems something bad has happened. Please try again later.",
+      "successfulRegistration": {
+        "title": "Registration completed successfully",
+        "message": "You'll redirect to your panel automatically. \n Please click bellow button if you're not redirected within a few seconds."
+      }
     }
   },
   "navbar": {

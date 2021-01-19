@@ -4,13 +4,13 @@
       <div class="w-3/4 h-20">
         <Field type="email" :placeholder="$t('authForm.email')" name="email" class="formInput"
                rules="required|email"/>
-        <ErrorMessage name="email" class="text-red-500 text-sm"/>
+        <ErrorMessage name="email" class="text-red-500 text-xs leading-none"/>
       </div>
 
       <div class="w-3/4 h-20">
         <Field type="password" :placeholder="$t('authForm.password')" name="password"
                class="formInput" rules="required|min:2"/>
-        <ErrorMessage name="password" class="text-red-500 text-sm"/>
+        <ErrorMessage name="password" class="text-red-500 text-xs"/>
       </div>
 
       <button
@@ -25,15 +25,12 @@
 <script>
   import {useRouter} from 'vue-router'
   import {useI18n} from 'vue-i18n'
-  import Swal from 'sweetalert2'
   import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
-
   import axios from 'axios'
+  import Swal from 'sweetalert2'
 
   export default {
     name: 'LoginForm',
-    props: ['update:modelValue'],
-    emits: ['update:modelValue'],
     components: {VeeForm, Field, ErrorMessage},
     setup () {
       const router = useRouter()
@@ -57,7 +54,7 @@
               icon: 'error',
               width: 500,
               backdrop: 'rgba(54,58,83,0.5)',
-              text: i18n.t('authForm.errors.generalError'),
+              text: i18n.t('authForm.alerts.generalError'),
               showConfirmButton: false,
               showCloseButton: true
             })

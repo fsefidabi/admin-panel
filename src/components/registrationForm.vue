@@ -2,27 +2,25 @@
   <VeeForm v-slot="{ handleSubmit }" as="div">
     <form @submit="handleSubmit($event, register)" class="flex flex-col justify-center items-center pt-6">
       <div class="w-3/4 h-20">
-        <Field name="username" type="text" :placeholder="$t('authForm.username')" class="formInput"
-               rules="required"/>
-        <ErrorMessage name="username" class="text-red-500 text-sm"/>
+        <Field name="username" type="text" rules="required" :placeholder="$t('authForm.username')" class="formInput" />
+        <ErrorMessage name="username" class="text-red-500 text-xs"/>
       </div>
 
       <div class="w-3/4 h-20">
-        <Field name="email" type="email" :placeholder="$t('authForm.email')"
-               class="formInput" rules="required|email"/>
-        <ErrorMessage name="email" class="text-red-500 text-sm"/>
+        <Field name="email" type="email" rules="required|email" :placeholder="$t('authForm.email')"
+               class="formInput" />
+        <ErrorMessage name="email" class="text-red-500 text-xs"/>
       </div>
 
       <div class="w-3/4 h-20">
-        <Field type="password" :placeholder="$t('authForm.password')" name="password"
-               class="formInput" rules="required|min:2"/>
-        <ErrorMessage name="password" class="text-red-500 text-sm"/>
+        <Field name="password" type="password" rules="required|min:2" :placeholder="$t('authForm.password')" class="formInput" />
+        <ErrorMessage name="password" class="text-red-500 text-xs"/>
       </div>
 
       <div class="w-3/4 h-20">
-        <Field type="password" :placeholder="$t('authForm.passwordConfirmation')" name="passwordConfirmation"
-               class="formInput"/>
-        <ErrorMessage class="text-red-500 text-sm"/>
+        <Field name="confirmation" type="password" rules="required|confirmed:@password"
+               :placeholder="$t('authForm.passwordConfirmation')" class="formInput" />
+        <ErrorMessage name="confirmation" class="text-red-500 text-xs"/>
       </div>
 
       <button
@@ -37,16 +35,22 @@
 
 <script>
   import {useRouter} from 'vue-router'
-  import axios from 'axios'
+  import {useI18n} from 'vue-i18n'
   import {Form as VeeForm, Field, ErrorMessage} from 'vee-validate'
+  import axios from 'axios'
+  import Swal from 'sweetalert2'
+
+
   export default {
     name: 'registrationForm',
     components: {VeeForm, Field, ErrorMessage},
     setup () {
       const router = useRouter()
+      const i18n = useI18n()
 
-      async function register (values) {
+      async function register (values, actions) {
         console.log(values)
+        console.log(actions)
         let role = 'Authenticated'
 
         if (values.username.includes('admin')) {
@@ -62,27 +66,36 @@
               })
           localStorage.setItem('user', JSON.stringify(res.data.user))
           localStorage.setItem('jwt', res.data.jwt)
+          const swal = await Swal.fire({
+            icon: 'success',
+            width: 500,
+            backdrop: 'rgba(54,58,83,0.5)',
+            title: i18n.t('authForm.alerts.successfulRegistration.title'),
+            text: i18n.t('authForm.alerts.successfulRegistration.message'),
+            timer: 2000,
+            showCloseButton: true
+          })
+          if (swal.isConfirmed) {
+            await router.push('/dashboard')
+          }
           await router.push('/dashboard')
         } catch (err) {
+          console.log(err.response.data.data[0].messages[0])
           if (err.response.data.data[0].messages[0].message.includes('Username already taken')) {
-            alert('Please choose another username. This username has already been token.')
+            actions.setFieldError('username', 'This username has already been token.')
+            // alert('Please choose another username. This username has already been token.')
           } else if (err.response.data.data[0].messages[0].message.includes('Please provide valid email address')) {
-            alert('Please provide valid email address.')
+            actions.setFieldError('email', 'Please provide valid email address.')
+            // alert('Please provide valid email address.')
           } else if (err.response.data.data[0].messages[0].message.includes('Email is already taken')) {
-            alert('This email has already been registered.')
+            // alert('This email has already been registered.')
+            actions.setFieldError('email', 'This email has already been registered.')
           }
         }
       }
 
-      // function equality (value) {
-      //   if (value !== values.password) {
-      //     alert('password confirmation doesn\'t match password')
-      //   }
-      // }
-
       return {
-        register,
-        // equality
+        register
       }
     }
   }

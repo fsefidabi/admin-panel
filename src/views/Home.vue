@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen h-screen flex flex-col justify-center items-center panel-background">
-    <div class="w-80 mb-5">
+    <div class="w-96 mb-5">
       <button v-for="tab in tabs" :key="tab"
               class="w-1/2 py-3 rounded-t-md outline-none focus:outline-none duration-500 shadow-sm shadow-inner shadow-2xl"
               :class="[state.currentTab === tab ?
