@@ -6,7 +6,7 @@ const store = createStore({
   state: {
     locale: selectedLocale,
     dir: 'ltr',
-    isDarkMode: false
+    isDarkMode: JSON.parse(localStorage.vuex).isDarkMode || false
   },
   mutations: {
     UPDATE_LOCALE (state, newLocale) {

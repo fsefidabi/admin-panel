@@ -78,11 +78,11 @@
           await router.push('/dashboard')
         } catch (err) {
           if (err.response.data.data[0].messages[0].message.includes('Username already taken')) {
-            actions.setFieldError('username', 'This username has already been token.')
+            actions.setFieldError('username', i18n.t('authForm.alerts.duplicateUsername'))
           } else if (err.response.data.data[0].messages[0].message.includes('Please provide valid email address')) {
-            actions.setFieldError('email', 'Please provide valid email address.')
+            actions.setFieldError('email', i18n.t('authForm.alerts.email'))
           } else if (err.response.data.data[0].messages[0].message.includes('Email is already taken')) {
-            actions.setFieldError('email', 'This email has already been registered.')
+            actions.setFieldError('email', i18n.t('authForm.alerts.duplicateEmail'))
           }
         }
       }

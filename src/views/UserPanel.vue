@@ -5,8 +5,8 @@
     <Navbar class="w-11/12"/>
     <div class="w-11/12 h-full panel-background py-10 px-8 rounded-3xl">
       <router-view class="min-h-screen"/>
-      <div class="fixed bottom-5 right-16">
-        <SwitchButton class="" :dark-mode="darkMode" :theme="theme" @switch-theme="$emit('toggleTheme')" />
+      <div class="w-44 fixed bottom-5 right-16 rtl:left-20">
+        <SwitchButton :dark-mode="darkMode" @switch-theme="$emit('toggleTheme')" />
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
   export default {
     name: 'MainPanel',
     components: {SwitchButton, StatusBar, Navbar},
-    props: ['darkMode', 'theme', 'dir'],
+    props: ['darkMode', 'dir'],
     emits: ['toggleTheme']
   }
 </script>

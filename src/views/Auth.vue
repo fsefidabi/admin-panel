@@ -14,7 +14,9 @@
     </div>
 
     <div class="flex justify-center items-center">
-      <SwitchButton :dark-mode="darkMode" :theme="theme" @switch-theme="$emit('toggleTheme')" />
+      <div class="w-44">
+        <SwitchButton :dark-mode="darkMode" :theme="theme" @switch-theme="$emit('toggleTheme')" />
+      </div>
       <I18nButton class="ml-5 rtl:mr-5" />
     </div>
   </div>

@@ -33,7 +33,7 @@
   }
 
   .formInput {
-    @apply w-full h-10 rounded px-3 outline-none ring-2 ring-gray-200 focus:ring-teal-600
+    @apply w-full h-10 rounded px-3 outline-none ring-2 ring-gray-200 focus:ring-teal-600 text-black
   }
 
   .hamburgerIcon {
