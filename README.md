@@ -5,7 +5,7 @@ Client admin panel application built with Vue 3 and tailwindCSS.
 It supports two _English_ and _Persian_ languages and you can switch them if needed.
 You can simply follow below commands and create a new user to use your own dashboard.  
 
-#### Quick Start:
+### Quick Start:
 
 Use bellow commands to start vue app on port `8080`.
 
@@ -18,7 +18,7 @@ npm start
 
 Application is running on `http://localhost:8080`
 
-#### Development commands:
+### Available commands:
 
 ```javascript
 // Serve a .js or .vue file in development mode
