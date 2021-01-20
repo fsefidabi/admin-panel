@@ -20,8 +20,15 @@ Application is running on `http://localhost:8080`
 
 #### Development commands:
 
-- Serve a .js or .vue file in development mode: `npm run serve`
-- Build a .js or .vue file in production mode: `npm run build`
-- Linting both the template and script parts of Vue components: `npm run lint`
+```javascript
+// Serve a .js or .vue file in development mode
+npm run serve
+
+// Build a .js or .vue file in production mode
+npm run build
+
+// Linting both the template and script parts of Vue components
+npm run lint
+```
 
 To use all features you should also clone and run the [server side application](https://github.com/fsefidabi/admin-panel-sever.git).
