@@ -33,11 +33,7 @@
       "wrongInput": "Incorrect email or password.",
       "generalError": "It seems something bad has happened. Please try again later.",
       "duplicateEmail": "This email has already been registered.",
-      "duplicateUsername": "This username has already been token.",
-      "successfulRegistration": {
-        "title": "Registration completed successfully",
-        "message": "You'll redirect to your panel automatically. \n Please click bellow button if you're not redirected within a few seconds."
-      }
+      "duplicateUsername": "This username has already been token."
     }
   },
   "navbar": {

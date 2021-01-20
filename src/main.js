@@ -25,5 +25,3 @@ configure({
     },
   }),
 })
-
-console.log(i18n.global.locale)

@@ -79,9 +79,8 @@ router.beforeEach((to, from, next) => {
       next({ path: '/' })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))
-      console.log(user)
       if (to.matched.some(record => record.meta.is_admin)) {
-        if (user.role.name == 'Admin') {
+        if (user.role.name === 'Admin') {
           next()
         } else {
           Swal.fire({
