@@ -27,6 +27,9 @@ npm run serve
 // Build a .js or .vue file in production mode
 npm run build
 
+// Run application in production mode
+npm run start
+
 // Linting both the template and script parts of Vue components
 npm run lint
 ```
