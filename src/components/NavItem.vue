@@ -8,7 +8,7 @@
       <router-link :to="`/${item.path}`" class="inline-block h-full py-2 lg:py-3.5 px-6 rtl:pr-6">
         <NavItemSector class="hidden md:block transform translate-x-full rotate-180 right-0" v-if="state.currentTab === $t(item.name)"/>
         <span>
-          <i :class="'fa fa-' + item.icon"></i>
+          <i :class="item.icon"></i>
         </span>
         <span class="inline md:hidden lg:inline mx-5 rtl:ml-0">{{ $t(item.name) }}</span>
         <NavItemSector class="hidden md:block transform -translate-x-full rotate-90 left-0" v-if="state.currentTab === $t(item.name)"/>
@@ -34,22 +34,22 @@
           [
             {
               name: 'navbar.navItems.dashboard',
-              icon: 'home',
+              icon: 'fa fa-home',
               path: 'dashboard'
             },
             {
               name: 'navbar.navItems.pages',
-              icon: 'file',
+              icon: 'fa fa-file',
               path: 'pages'
             },
             {
               name: 'navbar.navItems.users',
-              icon: 'users',
+              icon: 'fa fa-users',
               path: 'users'
             },
             {
               name: 'navbar.navItems.archive',
-              icon: 'archive',
+              icon: 'fa fa-archive',
               path: 'archive'
             }
           ]
