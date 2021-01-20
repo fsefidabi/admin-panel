@@ -7,6 +7,7 @@ import Dashboard from '@/views/Dashboard.vue'
 import Pages from '@/views/Pages'
 import Users from '@/views/Users'
 import Archive from '@/views/Archive'
+import NotFoundComponent from '../components/NotFoundComponent'
 
 const routes = [
   {
@@ -46,7 +47,11 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-    
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFoundComponent
   }
 ]
 

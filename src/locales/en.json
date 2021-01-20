@@ -10,7 +10,12 @@
   "routes": {
     "errors" :  {
       "requiresAuth": "Please login first.",
-      "requiresAdmin": "Access to this page requires admin authentication."
+      "requiresAdmin": "Access to this page requires admin authentication.",
+      "404Error": {
+        "title": "Page Not Found !",
+        "description": "Please enter a correct URL address or click on the below button to redirect to homepage.",
+        "redirectBtn": "Redirect"
+      }
     }
   },
   "authForm": {
