@@ -39,7 +39,7 @@ function checkDefaultLanguage() {
   return matched
 }
 
-export const selectedLocale = JSON.parse(localStorage.vuex).locale || checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en'
+export const selectedLocale = checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en'
 export const languages = Object.getOwnPropertyNames(loadLocaleMessages())
 export default createI18n({
   locale: selectedLocale,
