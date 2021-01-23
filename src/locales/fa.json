@@ -3,10 +3,7 @@
     "en": "انگلیسی",
     "fa": "فارسی"
   },
-  "uiTheme": {
-    "darkMode": "حالت تیره",
-    "lightMode": "حالت روشن"
-  },
+  "uiTheme" : "حالت تیره",
   "routes": {
     "errors" :  {
       "requiresAuth": ".لطفا ابتدا وارد حساب کاربری خود شوید",

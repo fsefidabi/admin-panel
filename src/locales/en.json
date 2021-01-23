@@ -3,10 +3,7 @@
     "en": "English",
     "fa": "Farsi"
   },
-  "uiTheme" :  {
-    "darkMode": "Dark Mode",
-    "lightMode": "Light Mode"
-  },
+  "uiTheme" : "Dark Mode",
   "routes": {
     "errors" :  {
       "requiresAuth": "Please login first.",

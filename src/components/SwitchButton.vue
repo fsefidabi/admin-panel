@@ -3,7 +3,7 @@
     <label class="flex flex-row-reverse rtl:flex-row justify-center items-center cursor-pointer">
       <input class="input" type="checkbox" :checked="darkMode" @change="$emit('switchTheme')">
       <span class="switch relative flex items-center flex-shrink-0"></span>
-      <span class="mr-3 rtl:ml-3 main-text-color overflow-hidden overflow-ellipsis whitespace-nowrap">Dark Mode</span>
+      <span class="mr-3 rtl:ml-3 main-text-color overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $t('uiTheme') }}</span>
     </label>
   </div>
 </template>

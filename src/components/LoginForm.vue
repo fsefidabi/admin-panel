@@ -47,6 +47,7 @@
           await router.push('/dashboard')
         } catch (err) {
           if (err.response.data.data[0].messages[0].message.includes('Identifier or password invalid')) {
+            console.log(err.response.data.data[0].messages[0])
             actions.setErrors({
               email: i18n.t('authForm.alerts.wrongInput'),
               password: i18n.t('authForm.alerts.wrongInput')
