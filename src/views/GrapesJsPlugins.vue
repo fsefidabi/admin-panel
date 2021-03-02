@@ -71,7 +71,7 @@
                   { name: 'insert', items: [ 'Image', 'Table', 'Smiley' ] },
                   { name: 'link', items: ['Link', 'Unlink'] },
                 ],
-                uiColor: '#1f2227',
+                // uiColor: '#1f2227',
                 language: 'en',
                 removeButtons: '',
                 // contentsCss: [ CKEDITOR.getUrl('contents.css') ]
