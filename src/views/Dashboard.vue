@@ -22,8 +22,8 @@
 <script>
   import {useI18n} from 'vue-i18n'
   import {computed, reactive} from 'vue'
-  import CardComponent from '@/components/CardComponent'
-  import IncomeChart from '@/components/IncomeChart'
+  import CardComponent from '../components/CardComponent.vue'
+  import IncomeChart from '../components/IncomeChart.vue'
 
   export default {
     name: 'Dashboard',

@@ -26,7 +26,7 @@
 <script>
   import {useRouter} from 'vue-router'
   import axios from 'axios'
-  import I18nButton from './I18nBtn'
+  import I18nButton from './I18nButton'
 
   export default {
     name: 'StatusBar',

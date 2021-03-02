@@ -27,7 +27,7 @@
   import {useI18n} from 'vue-i18n'
   import LoginForm from '@/components/LoginForm'
   import RegistrationForm from '@/components/registrationForm'
-  import I18nButton from '@/components/I18nBtn'
+  import I18nButton from '@/components/I18nButton'
   import SwitchButton from '@/components/SwitchButton'
 
   export default {

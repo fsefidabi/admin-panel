@@ -38,9 +38,9 @@
               path: 'dashboard'
             },
             {
-              name: 'navbar.navItems.pages',
+              name: 'navbar.navItems.email-builder',
               icon: 'fa fa-file',
-              path: 'pages'
+              path: 'email-builder'
             },
             {
               name: 'navbar.navItems.users',

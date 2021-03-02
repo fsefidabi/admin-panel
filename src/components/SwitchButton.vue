@@ -62,7 +62,7 @@
   }
 
   .input:focus + .switch::before {
-    @apply border-coolGray-400
+    @apply border-indigo-300
   }
 
   .input:focus:checked + .switch::before {

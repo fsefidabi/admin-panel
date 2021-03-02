@@ -37,7 +37,7 @@
     "websiteLogo": "Logo",
     "navItems": {
       "dashboard": "Dashboard",
-      "pages": "Pages",
+      "email-builder": "Email Builder",
       "users": "Users",
       "archive": "Archive"
     }
