@@ -76,9 +76,9 @@ const router = createRouter({
 })
 
 // router.beforeEach((to, from, next) => {
-//   if (to.fullPath === '/' && localStorage.getItem('jwt')) {
-//     next({ path: '/dashboard' })
-//   }
+  // if (to.fullPath === '/' && localStorage.getItem('jwt')) {
+  //   next({ path: '/dashboard' })
+  // }
 
   
 //   if (to.matched.some(record => record.meta.requiresAuth)) {
