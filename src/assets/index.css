@@ -43,81 +43,6 @@
   .email-builder {
     @apply px-7 py-3 rounded bg-gray-500 dark:bg-gray-300 text-gray-100 dark:text-gray-800 font-bold
   }
-
-  /* grape.js style */
-
-  /* Primary color for the background */
-  .gjs-one-bg {
-    @apply bg-gray-100  dark:bg-blueGray-800
-  }
-
-  /* Secondary color for the text color */
-  .gjs-two-color {
-    @apply text-gray-700 dark:text-white
-  }
-
-  /* Tertiary color for the background */
-  .gjs-three-bg {
-    @apply bg-gray-100 dark:bg-blueGray-800
-  }
-
-  /* Quaternary color for the text color  */
-  .gjs-four-color,
-  .gjs-four-color-h:hover {
-    @apply text-gray-700 dark:text-white
-  }
-
-  .gjs-pn-btn {
-    @apply text-gray-700 dark:text-white
-  }
-
-  .gjs-pn-btn.gjs-pn-active {
-    @apply text-gray-700 dark:text-white
-  }
-
-  div[data-gjs-type="wrapper"],
-  #gjs body,
-  .main-body {
-    @apply bg-gray-200
-  }
-
-  .cm-s-hopscotch.CodeMirror,
-  .cm-s-hopscotch .CodeMirror-gutters {
-    @apply bg-gray-200 dark:bg-blueGray-800 text-gray-800 dark:text-gray-100
-  }
-  .gjs-cm-editor#gjs-cm-htmlmixed #gjs-cm-title,
-  .gjs-cm-editor#gjs-cm-css #gjs-cm-title {
-    @apply text-indigo-900 dark:text-indigo-200 font-bold
-  }
-
-  .cm-s-hopscotch span.cm-tag {
-    @apply text-red-800 dark:text-red-300
-  }
-
-  .cm-s-hopscotch span.cm-property,
-  .cm-s-hopscotch span.cm-attribute {
-    @apply text-emerald-700 dark:text-emerald-200
-  }
-
-  .cm-s-hopscotch span.cm-string {
-    @apply text-orange-500 dark:text-orange-200
-  }
-
-  .cm-s-hopscotch span.cm-atom {
-    @apply text-rose-800 dark:text-rose-200
-  }
-
-  .cm-s-hopscotch span.cm-def {
-    @apply text-yellow-700 dark:text-yellow-300
-  }
-
-  .cm-s-hopscotch span.cm-number {
-    @apply text-pink-700 dark:text-pink-200
-  }
-
-  .cm-s-hopscotch span.cm-variable {
-    @apply text-teal-500 dark:text-teal-200
-  }
 }
 
 body {
@@ -150,17 +75,4 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
-}
-
-.gjs-pn-commands{
-  width: 120px;
-  left: 850px;
-}
-
-.tui-image-editor__apply-btn {
-  color: #000
-}
-
-.icon-ltr:before {
-  content: "\ea74";
 }

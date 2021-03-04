@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen my-2 flex flex-col justify-center items-center">
+  <div class="min-h-screen mt-2 flex flex-col justify-center items-center">
     <div :dir="this.dir" class="w-full px-5 flex justify-between sticky top-0 left-0">
       <div class="px-2 light-text"> 
         <router-link to="/email-builder" :dir="dir">
@@ -90,6 +90,7 @@
 
         const blockManager = editor.BlockManager
         const blocks = blockManager.getAll()
+        console.log(blocks)
         blocks.map(block => {
           if(block.attributes.id === 'sect100') {
             block.attributes.category = {
@@ -193,11 +194,33 @@
           command: 'core:canvas-clear',
           attributes: { class: 'fa fa-trash'},
         })
+        editor.on('component:selected', () => {
+          const openSmBtn = panelManager.getButton('views', 'open-sm');
+          openSmBtn.set('active', 1)
+        })
+
+        const styleManager = editor.StyleManager
+        editor.on('load', () => {
+          styleManager.addProperty('typography', {
+          name: 'Text direction',
+          property: 'direction',
+          type: 'radio',
+          defaults: 'rtl',
+          list: [
+            { value: 'rtl', name: 'rtl' },
+            { value: 'ltr', name: 'ltr' }
+          ],
+          })
+          styleManager.getProperty('typography', 'font-family').set('options', [
+            { value: "Yekan", name: 'Yekan' },
+            { value: "Nazanin", name: 'Nazanin' }
+          ])
+        })
       })
     }
   }
 </script>
 
 <style>
-
+  
 </style>

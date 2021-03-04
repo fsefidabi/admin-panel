@@ -10,9 +10,7 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
-    "@builder.io/vue": "^0.1.9",
     "@fortawesome/vue-fontawesome": "^3.0.0-3",
-    "@mailupinc/bee-plugin": "^1.2.2",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@vee-validate/i18n": "^4.0.2",
     "@vee-validate/rules": "^4.0.4",
@@ -23,7 +21,6 @@
     "core-js": "^3.6.5",
     "grapesjs": "^0.16.41",
     "grapesjs-blocks-basic": "^0.1.8",
-    "grapesjs-mjml": "^0.5.2",
     "grapesjs-plugin-ckeditor": "0.0.10",
     "grapesjs-plugin-export": "^1.0.7",
     "grapesjs-plugin-forms": "^2.0.1",
